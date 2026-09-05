@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Calculate Walk Of Life lottery win chances for 1 to 35 tickets." />
+    <title>Walk Of Life Lottery Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">WALK OF LIFE · ODDS TOOL</p>
+          <h1>Lottery<br /><span>Calculator</span></h1>
+          <p class="intro">Set your current bonuses and see the chance that at least one ticket wins.</p>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit-ring"></div>
+          <span class="star star-one">✦</span><span class="star star-two">✦</span><span class="star star-three">✦</span>
+          <div class="ticket-mark">$<small>WIN</small></div>
+        </div>
+      </section>
+
+      <section class="calculator" aria-label="Lottery bonus calculator">
+        <div class="settings-panel">
+          <div class="panel-heading">
+            <p class="section-label">01 · CONFIGURE</p>
+            <h2>Your bonuses</h2>
+            <p>Base chance: <strong>3.0%</strong> per ticket</p>
+          </div>
+
+          <div class="bonus-list">
+            <article class="bonus-card">
+              <img src="assets/pet-cat.png" alt="Pet Cat" class="bonus-art pet-art" />
+              <div class="bonus-copy"><h3>Pet Cat</h3><p>Choose your cat's status.</p></div>
+              <label class="select-wrap"><span class="sr-only">Pet Cat status</span>
+                <select id="pet-status">
+                  <option value="0">No Pet Cat</option>
+                  <option value="1.5">Neglected · +1.5%</option>
+                  <option value="3">Content · +3.0%</option>
+                  <option value="4.5">Pampered · +4.5%</option>
+                </select>
+              </label>
+            </article>
+
+            <article class="bonus-card">
+              <img src="assets/lucky-cat-figurine.png" alt="Lucky Cat Figurine" class="bonus-art figurine-art" />
+              <div class="bonus-copy"><h3>Lucky Cat Figurine</h3><p>+3.0% win chance</p></div>
+              <label class="toggle"><input type="checkbox" id="figurine" /><span></span><b>OFF</b></label>
+            </article>
+
+            <article class="bonus-card">
+              <img src="assets/hacker.png" alt="Hacker" class="bonus-art hacker-art" />
+              <div class="bonus-copy"><h3>Mart Hacks</h3><p>+1.0% for each hack</p></div>
+              <label class="select-wrap compact"><span class="sr-only">Number of Mart hacks</span>
+                <select id="hacks">
+                  <option value="0">0 hacks</option><option value="1">1 hack</option><option value="2">2 hacks</option><option value="3">3 hacks</option><option value="4">4 hacks</option>
+                </select>
+              </label>
+            </article>
+
+            <article class="bonus-card">
+              <img src="assets/virgo.png" alt="Virgo zodiac artwork" class="bonus-art virgo-art" />
+              <div class="bonus-copy"><h3>Virgo</h3><p>+9.0% win chance</p></div>
+              <label class="toggle"><input type="checkbox" id="virgo" /><span></span><b>OFF</b></label>
+            </article>
+          </div>
+          <button id="calculate" type="button">Calculate my odds <span>→</span></button>
+        </div>
+
+        <aside class="results-panel">
+          <div class="result-top">
+            <div><p class="section-label">02 · RESULTS</p><h2>Winning chances</h2></div>
+            <div class="single-odds"><span>Per ticket</span><strong id="single-chance">3.00%</strong></div>
+          </div>
+          <div id="bonus-summary" class="bonus-summary">Base chance only</div>
+          <div id="odds-grid" class="odds-grid" aria-live="polite"></div>
+          <p class="formula-note">Chance of at least one win: 1 − (1 − per-ticket chance)<sup>tickets</sup></p>
+        </aside>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
