@@ -9,6 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .cost, .ev { display: block; margin-top: 4px; white-space: nowrap; font: 500 8px "DM Mono", monospace; }
+      .cost { color: #9895a7; }
+      .ev { color: #2c9b81; font-size: 9px; }
+      .ev.loss { color: #d9607e; }
+      .formula-detail { margin-top: 4px; }
+    </style>
   </head>
   <body>
     <main class="page-shell">
@@ -79,7 +86,8 @@
           </div>
           <div id="bonus-summary" class="bonus-summary">Base chance only</div>
           <div id="odds-grid" class="odds-grid" aria-live="polite"></div>
-          <p class="formula-note">Chance of at least one win: 1 − (1 − per-ticket chance)<sup>tickets</sup></p>
+          <p class="formula-note">Tickets cost $35 each. A win pays a random $950–$1,100 (average: $1,025).</p>
+          <p class="formula-note formula-detail">Expected net = (at-least-one-win chance × $1,025) − ticket cost.</p>
         </aside>
       </section>
     </main>

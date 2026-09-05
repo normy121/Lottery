@@ -8,6 +8,8 @@ const controls = {
 const grid = document.querySelector('#odds-grid');
 const oneTicket = document.querySelector('#single-chance');
 const summary = document.querySelector('#bonus-summary');
+const TICKET_COST = 35;
+const AVERAGE_PRIZE = (950 + 1100) / 2;
 
 function updateToggleLabels() {
   document.querySelectorAll('.toggle').forEach((toggle) => {
@@ -36,7 +38,10 @@ function render() {
   grid.innerHTML = Array.from({ length: 35 }, (_, index) => {
     const tickets = index + 1;
     const total = (1 - Math.pow(1 - decimalChance, tickets)) * 100;
-    return `<div class="odds-cell" style="--chance:${total}%"><span class="ticket-count"><b>${tickets}</b> ticket${tickets === 1 ? '' : 's'}</span><span class="chance">${total.toFixed(2)}%</span></div>`;
+    const cost = tickets * TICKET_COST;
+    const expectedNet = (total / 100) * AVERAGE_PRIZE - cost;
+    const evSign = expectedNet >= 0 ? '+' : '−';
+    return `<div class="odds-cell" style="--chance:${total}%"><span class="ticket-count"><b>${tickets}</b> ticket${tickets === 1 ? '' : 's'}</span><span class="chance">${total.toFixed(2)}%</span><span class="cost">Cost $${cost}</span><span class="ev ${expectedNet < 0 ? 'loss' : ''}">EV ${evSign}$${Math.abs(expectedNet).toFixed(2)}</span></div>`;
   }).join('');
 }
 
