@@ -45,9 +45,16 @@ function render() {
   }).join('');
 }
 
-Object.values(controls).forEach((input) => input.addEventListener('change', render));
-document.querySelector('#calculate').addEventListener('click', () => {
+[controls.pet, controls.figurine].forEach((input) => input.addEventListener('change', render));
+
+controls.hacks.addEventListener('change', () => {
+  if (Number(controls.hacks.value) > 0) controls.virgo.checked = false;
   render();
-  document.querySelector('.results-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
+
+controls.virgo.addEventListener('change', () => {
+  if (controls.virgo.checked) controls.hacks.value = '0';
+  render();
+});
+
 render();
